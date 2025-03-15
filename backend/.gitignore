@@ -1,0 +1,33 @@
+# Node modules
+node_modules/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Diretórios de build
+dist/
+build/
+
+# Dependências de desenvolvimento
+coverage/
+
+# Arquivos de configuração do ambiente
+.env
+.env.local
+.env.*.local
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# Arquivos de edição temporária
+*.swp
+*.swo
+
+# Testes
+test/
+tests/
