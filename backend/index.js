@@ -1,13 +1,16 @@
-// index.js
-const express = require('express');
-const app = express();
-const port = 3000;
+import puppeteer from 'puppeteer';
 
-app.get('/', (req, res) => {
-  res.send('Olá, Mundo!');
-  
-});
+(async () => {
+  // Launch the browser and open a new blank page
+  const browser = await puppeteer.launch();
+  const page = await browser.newPage();
 
-app.listen(port, () => {
-  console.log(`Servidor rodando na porta ${port}`);
-});
+  // Navigate the page to a URL
+  await page.goto('https://www.mercadolivre.com.br/');
+
+  // Set screen size
+  await page.screenshot("screenshot.png", { fullPage: true });
+
+  await browser.close();
+})();
+
