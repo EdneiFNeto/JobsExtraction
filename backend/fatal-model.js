@@ -21,6 +21,7 @@ const URL = 'https://fatalmodel.com/acompanhantes-rio-de-janeiro-rj';
       name: item.querySelector('.text-base')?.textContent,
       age: item.querySelector('.flex .text-xs .text-ds-black-fm')?.textContent,  
       value: item.querySelector('.price-list__value')?.textContent,  
+      link: item.querySelector('a')?.getAttribute('href')
     })); 
 
     return data;
@@ -33,5 +34,5 @@ const URL = 'https://fatalmodel.com/acompanhantes-rio-de-janeiro-rj';
   });
 
   // Fecha o navegador
-  // await browser.close();
+  await browser.close();
 })();

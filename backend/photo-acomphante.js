@@ -23,6 +23,7 @@ const URL = 'https://www.photoacompanhantes.com/acompanhantes/cabo-frio';
       name: item.querySelector('.pin div a figure .titulo')?.textContent,
       age: item.querySelector('.pin .categorias .categorias_basicas').childNodes[1]?.textContent,  
       value: item.querySelector('.pin .categorias .categorias_basicas').childNodes[2]?.textContent,  
+      link: 'https://www.photoacompanhantes.com/acompanhantes/cabo-frio' + item.querySelector('.pin a')?.getAttribute('href'),
     })); 
 
     return data;
@@ -35,5 +36,5 @@ const URL = 'https://www.photoacompanhantes.com/acompanhantes/cabo-frio';
   });
 
   // Fecha o navegador
-  // await browser.close();
+  await browser.close();
 })();
