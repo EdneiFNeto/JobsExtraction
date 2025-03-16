@@ -8,22 +8,31 @@ import fs from 'fs';
   // Abre uma nova página
   const page = await browser.newPage();
   
-  // Navega até o site desejado
-  await page.goto('https://fatalmodel.com/acompanhantes-rio-de-janeiro-rj');
+  await page.goto('https://www.photoacompanhantes.com/acompanhantes/cabo-frio');
   
-  const list = await page.evaluate(() => {
-    const nodeList = document.querySelectorAll('section img');
-    const array = [...nodeList];
-    return array.map(element => { return element.src });
+  const result = await page.evaluate(() => {
+    
+    const results = document.querySelectorAll('.resultados .pin');
+    const list  = [...results];
+    console
+
+    const data =  list.map((item) => ({
+      length: list.length,
+      img: item.querySelector('.pin div a figure span img')?.getAttribute('src'),
+      name: item.querySelector('.pin div a figure .titulo')?.textContent,
+      age: item.querySelector('.pin .categorias .categorias_basicas').childNodes[1]?.textContent,  
+      value: item.querySelector('.pin .categorias .categorias_basicas').childNodes[2]?.textContent,  
+    })); 
+
+    return data;
   });
 
+  console.log(result);
 
-  fs.writeFile('data.json', JSON.stringify(list, null, 2), err => {
+  fs.writeFile('data.json', JSON.stringify(result, null, 2), err => {
     if (err) throw new Error('something went wrong');
   });
 
-  
   // Fecha o navegador
-  await browser.close();
+  // await browser.close();
 })();
-
