@@ -1,5 +1,6 @@
 import puppeteer from 'puppeteer';
 import fs from 'fs';
+const URL = 'https://www.photoacompanhantes.com/acompanhantes/cabo-frio';
 
 (async () => {
   // Launch the browser and open a new blank page
@@ -8,7 +9,7 @@ import fs from 'fs';
   // Abre uma nova página
   const page = await browser.newPage();
   
-  await page.goto('https://www.photoacompanhantes.com/acompanhantes/cabo-frio');
+  await page.goto(URL);
   
   const result = await page.evaluate(() => {
     
@@ -29,7 +30,7 @@ import fs from 'fs';
 
   console.log(result);
 
-  fs.writeFile('data.json', JSON.stringify(result, null, 2), err => {
+  fs.writeFile('photo-acompanhante.json', JSON.stringify(result, null, 2), err => {
     if (err) throw new Error('something went wrong');
   });
 
